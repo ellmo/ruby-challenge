@@ -1,10 +1,14 @@
 %h1 sinatra issues
-%div{style: 'width:33%;display:inline-block'}
-  - @issues.select{|i| i.state == 'open' && !i.pull_request}.each do |issue|
-    %div= issue.title
-%div{style: 'width:33%;display:inline-block'}
-  - @issues.select{|i| i.state == 'open' && i.pull_request}.each do |issue|
-    %div= issue.title
-%div{style: 'width:33%;display:inline-block'}
-  - @issues.select{|i| i.state == 'closed'}.each do |issue|
-    %div= issue.title
+.kanban
+  #backlog.column
+    %h3 Backlog
+    - @issues.select{|i| i.state == 'open' && !i.pull_request}.each do |issue|
+      .issue= link_to issue.title, issue.url
+  #in-progress.column
+    %h3 In Progress
+    - @issues.select{|i| i.state == 'open' && i.pull_request}.each do |issue|
+      .issue= link_to issue.title, issue.url
+  #done.column
+    %h3 Done
+    - @issues.select{|i| i.state == 'closed'}.each do |issue|
+      .issue= link_to issue.title, issue.url
