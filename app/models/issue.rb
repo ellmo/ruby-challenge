@@ -4,6 +4,7 @@ class Issue
     @title = json['title']
     @url = json['url']
     @pull_request = json['pull_request'].values.compact.present?
+    @state = json['state']
   end
 
   def self.fetch user, repo, count
