@@ -21,4 +21,13 @@ class GithubClient
       puts (e.message)
     end
   end
+
+  def fetch_combined_issues user, repo, count
+    issues = fetch_issues user, repo
+    if issues.size < count
+      closed_issues = fetch_issues user, repo, 'closed'
+      issues += closed_issues.first(count - issues.size)
+    end
+    return issues
+  end
 end
