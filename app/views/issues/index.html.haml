@@ -1,0 +1,10 @@
+%h1 sinatra issues
+%div{style: 'width:33%;display:inline-block'}
+  - @issues.select{|i| i.state == 'open' && !i.pull_request}.each do |issue|
+    %div= issue.title
+%div{style: 'width:33%;display:inline-block'}
+  - @issues.select{|i| i.state == 'open' && i.pull_request}.each do |issue|
+    %div= issue.title
+%div{style: 'width:33%;display:inline-block'}
+  - @issues.select{|i| i.state == 'closed'}.each do |issue|
+    %div= issue.title
