@@ -1,5 +1,7 @@
 class Issue
 
+  attr_accessor :title, :url, :pull_request, :state
+
   def initialize json
     @title = json['title']
     @url = json['url']
