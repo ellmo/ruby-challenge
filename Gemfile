@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.2'
-gem 'pg'
 gem 'turbolinks'
 
 gem 'coffee-rails', '~> 4.0.0'
